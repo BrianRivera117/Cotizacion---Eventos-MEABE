@@ -25,6 +25,7 @@ export default function App() {
   const [quote, setQuote] = useState<QuoteItem[]>([]);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [includeISR, setIncludeISR] = useState(false);
+  const [eventDate, setEventDate] = useState("");
 
   const addToQuote = (service: Service) => {
     setQuote(prev => {
@@ -59,8 +60,12 @@ export default function App() {
   const handleWhatsAppRedirect = () => {
     const itemsMessage = quote.map(item => `- ${item.nombre}: ${item.cantidad} ${item.unidad_medida === 'persona' ? 'personas' : 'unidades'} ($${(item.precio_base * item.cantidad).toLocaleString('es-MX', { minimumFractionDigits: 2 })})`).join('%0A');
     
+    // Format date if exists
+    const formattedDate = eventDate ? eventDate.split('-').reverse().join('/') : 'Por definir';
+
     const message = `*Cotización Eventos MEABE*%0A%0A` +
       `Hola, me interesa una cotización para mi evento con los siguientes servicios:%0A%0A` +
+      `*Fecha tentativa de mi evento:* ${formattedDate}%0A%0A` +
       `${itemsMessage}%0A%0A` +
       `*Subtotal:* $${totals.subtotal.toLocaleString('es-MX', { minimumFractionDigits: 2 })}%0A` +
       (includeISR ? `*IVA (16%):* $${totals.isr.toLocaleString('es-MX', { minimumFractionDigits: 2 })}%0A` : '') +
@@ -149,6 +154,21 @@ export default function App() {
           
           {/* Services Section */}
           <main id="servicios" className="bg-white rounded-xl p-6 shadow-polish border border-border-meabe">
+            {/* Event Date Picker */}
+            <div className="mb-8 p-6 bg-gray-50 rounded-xl border border-gray-100">
+              <div className="flex items-center gap-2 mb-4">
+                <Calendar className="text-meabe" size={20} />
+                <h3 className="text-[14px] font-bold text-gray-800 uppercase tracking-tight">Fecha Tentativa del Evento</h3>
+              </div>
+              <input 
+                type="date" 
+                value={eventDate}
+                onChange={(e) => setEventDate(e.target.value)}
+                className="w-full md:w-64 bg-white border border-border-meabe rounded-lg px-4 py-3 text-sm font-bold text-gray-700 outline-none focus:ring-2 focus:ring-meabe/20 focus:border-meabe transition-all cursor-pointer"
+              />
+              <p className="text-[10px] text-gray-400 mt-2 italic">*Esta fecha nos ayuda a verificar disponibilidad.</p>
+            </div>
+
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-gray-800 tracking-tight">Catálogo de Servicios</h2>
               <p className="text-sm text-gray-500">Selecciona los elementos para tu cotización</p>
