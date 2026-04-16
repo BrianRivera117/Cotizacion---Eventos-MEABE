@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { CATEGORIES, SERVICES } from './constants';
 import { QuoteItem, Service } from './types';
-import logo from './LogoMEABE.jpg';
+import logo from './Logo MEABE.png';
 
 const IVA_RATE = 0.16;
 
@@ -44,9 +44,8 @@ export default function App() {
   };
 
   const updateQuantity = (id: number, cantidad: number) => {
-    if (cantidad < 1) return;
     setQuote(prev => prev.map(item => 
-      item.id === id ? { ...item, cantidad } : item
+      item.id === id ? { ...item, cantidad: Math.max(0, cantidad) } : item
     ));
   };
 
@@ -236,8 +235,13 @@ export default function App() {
                           <td className="py-3 px-2">
                             <input 
                               type="number" 
-                              value={item.cantidad}
-                              onChange={(e) => updateQuantity(item.id, parseInt(e.target.value) || 1)}
+                              value={item.cantidad === 0 ? "" : item.cantidad}
+                              onChange={(e) => updateQuantity(item.id, e.target.value === "" ? 0 : parseInt(e.target.value))}
+                              onBlur={(e) => {
+                                if (e.target.value === "" || parseInt(e.target.value) < 1) {
+                                  updateQuantity(item.id, 1);
+                                }
+                              }}
                               className="w-12 px-1 py-1 border border-border-meabe rounded text-[11px] font-bold text-center focus:outline-none focus:ring-1 focus:ring-meabe"
                             />
                           </td>
