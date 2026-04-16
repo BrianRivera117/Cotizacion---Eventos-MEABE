@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { CATEGORIES, SERVICES } from './constants';
 import { QuoteItem, Service } from './types';
-import logo from './Logo MEABE.png';
+import logo from './LogoMEABE.jpg';
 
 const IVA_RATE = 0.16;
 
