@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --font-sans: "Montserrat", sans-serif;
+  --color-meabe: #6c778b;
+  --color-bg: #f5f7fa;
+  --color-border-meabe: #e1e4e8;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-bg text-gray-800 antialiased;
+  }
+}
+
+@layer utilities {
+  .bg-dot-pattern {
+    background-image: radial-gradient(#6c778b20 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+.shadow-polish {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.totals-card {
+  @apply bg-gray-50 p-4 border-l-4 border-meabe rounded-r-lg;
+}
+
+.extra-pill {
+  @apply bg-[#eef1f5] px-3 py-1.5 rounded-full text-[11px] text-gray-600 flex items-center gap-1.5 font-medium whitespace-nowrap;
+}
+
+.category-title {
+  @apply text-[11px] uppercase tracking-[1px] text-gray-400 mb-4 border-b border-border-meabe pb-1 font-bold;
+}
