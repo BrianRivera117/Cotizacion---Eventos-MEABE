@@ -95,23 +95,24 @@ export default function App() {
               <span className="extra-pill">📅 Organización Completa</span>
             </div>
 
-            <div className="flex items-center gap-6">
-              <div className="hidden md:flex items-center space-x-6">
-                <a href="#inicio" className="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-meabe transition-colors">Inicio</a>
-                <a href="#servicios" className="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-meabe transition-colors">Servicios</a>
+              <div className="flex items-center gap-6">
+                <div className="hidden md:flex items-center space-x-6">
+                  <a href="#inicio" className="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-meabe transition-colors">Inicio</a>
+                  <a href="#servicios" className="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-meabe transition-colors">Servicios</a>
+                  <a href="#cotizador" className="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-meabe transition-colors">Cotización</a>
+                </div>
+                <a 
+                  href="#cotizador"
+                  className="relative p-2 text-meabe hover:bg-meabe/5 rounded-lg transition-colors"
+                >
+                  <ShoppingBag size={22} />
+                  {quote.length > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                      {quote.length}
+                    </span>
+                  )}
+                </a>
               </div>
-              <button 
-                onClick={() => setIsQuoteOpen(!isQuoteOpen)}
-                className="relative p-2 text-meabe hover:bg-meabe/5 rounded-lg transition-colors"
-              >
-                <ShoppingBag size={22} />
-                {quote.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
-                    {quote.length}
-                  </span>
-                )}
-              </button>
-            </div>
           </div>
         </div>
       </nav>
@@ -217,7 +218,7 @@ export default function App() {
           </main>
 
           {/* Quote Section */}
-          <aside id="cotizador" className="flex flex-col gap-6 sticky top-24">
+          <aside id="cotizador" className="flex flex-col gap-6 sticky top-24 scroll-mt-24">
             <div className="bg-white rounded-xl shadow-polish border border-border-meabe overflow-hidden flex flex-col max-h-[calc(100vh-120px)]">
               <div className="bg-white border-b border-border-meabe px-6 py-4 flex items-center justify-between">
                 <h3 className="text-[14px] font-bold text-meabe uppercase tracking-wider flex items-center gap-2">
