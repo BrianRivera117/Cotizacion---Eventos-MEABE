@@ -178,41 +178,98 @@ export default function App() {
             {CATEGORIES.map(category => (
               <div key={category.id} className="mb-10 last:mb-0">
                 <h3 className="category-title">{category.nombre}</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {SERVICES.filter(s => s.categoria_id === category.id).map(service => (
-                    <motion.div 
-                      key={service.id}
-                      className="bg-white rounded-lg p-4 border border-border-meabe hover:border-meabe transition-all flex items-center justify-between group"
-                    >
-                      <div className="flex-1">
-                        <h4 className="text-[14px] font-bold text-gray-700 mb-0.5">{service.nombre}</h4>
-                        <div className="flex items-center gap-2">
-                          <span className="text-[12px] font-medium text-gray-900">
-                            {service.precio_base > 0 ? `$${service.precio_base.toFixed(2)}` : 'Consultar'}
-                          </span>
-                          {service.precio_base > 0 && (
-                            <span className="text-[11px] text-gray-400 font-medium lowercase">/ {service.unidad_medida}</span>
+                
+                {category.id === 7 ? (
+                  <div className="overflow-x-auto rounded-lg border border-black">
+                    <table className="w-full text-center border-collapse">
+                      <thead>
+                        <tr className="bg-[#b8cce4] text-gray-900 text-[13px] border-b border-black">
+                          <th className="py-3 px-4 border-r border-black font-bold uppercase">Personas</th>
+                          <th className="py-3 px-4 border-r border-black font-bold uppercase text-center">Con verbena</th>
+                          <th className="py-3 px-4 font-bold uppercase text-center">Sin verbena</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-black">
+                        {[
+                          { label: 'Callejoneada pequeña', range: '50 - 69', conId: 30, sinId: 31 },
+                          { label: 'Callejoneada mediana', range: '70 - 99', conId: 32, sinId: 33 },
+                          { label: 'Callejoneada grande', range: '100 o más', conId: 34, sinId: 35 }
+                        ].map((row, idx) => {
+                          const conService = SERVICES.find(s => s.id === row.conId)!;
+                          const sinService = SERVICES.find(s => s.id === row.sinId)!;
+                          return (
+                            <tr key={idx} className="hover:bg-gray-50 transition-colors border-b last:border-b-0 border-black">
+                              <td className="py-4 px-4 border-r border-black">
+                                <div className="flex flex-col items-center">
+                                  <span className="text-[12px] font-bold text-gray-500 leading-tight block">{row.label}</span>
+                                  <span className="text-sm font-black text-gray-900">{row.range}</span>
+                                </div>
+                              </td>
+                              <td className="py-4 px-4 text-center border-r border-black">
+                                <div className="flex flex-col items-center gap-2">
+                                  <span className="text-lg font-black text-gray-900 uppercase tracking-tighter">${conService.precio_base}</span>
+                                  <button 
+                                    onClick={() => addToQuote(conService)}
+                                    className="bg-meabe text-white px-3 py-1 rounded text-[10px] font-bold hover:bg-[#5a6475] transition-all flex items-center gap-1 shadow-sm"
+                                  >
+                                    <Plus size={10} /> Añadir
+                                  </button>
+                                </div>
+                              </td>
+                              <td className="py-4 px-4 text-center">
+                                <div className="flex flex-col items-center gap-2">
+                                  <span className="text-lg font-black text-gray-900 uppercase tracking-tighter">${sinService.precio_base}</span>
+                                  <button 
+                                    onClick={() => addToQuote(sinService)}
+                                    className="bg-meabe text-white px-3 py-1 rounded text-[10px] font-bold hover:bg-[#5a6475] transition-all flex items-center gap-1 shadow-sm"
+                                  >
+                                    <Plus size={10} /> Añadir
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {SERVICES.filter(s => s.categoria_id === category.id).map(service => (
+                      <motion.div 
+                        key={service.id}
+                        className="bg-white rounded-lg p-4 border border-border-meabe hover:border-meabe transition-all flex items-center justify-between group"
+                      >
+                        <div className="flex-1">
+                          <h4 className="text-[14px] font-bold text-gray-700 mb-0.5">{service.nombre}</h4>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[12px] font-medium text-gray-900">
+                              {service.precio_base > 0 ? `$${service.precio_base.toFixed(2)}` : 'Consultar'}
+                            </span>
+                            {service.precio_base > 0 && (
+                              <span className="text-[11px] text-gray-400 font-medium lowercase">/ {service.unidad_medida}</span>
+                            )}
+                          </div>
+                          {service.descripcion && (
+                            <p className="text-[10px] text-gray-400 mt-1 line-clamp-1 group-hover:line-clamp-none">
+                              {service.descripcion}
+                            </p>
                           )}
                         </div>
-                        {service.descripcion && (
-                          <p className="text-[10px] text-gray-400 mt-1 line-clamp-1 group-hover:line-clamp-none">
-                            {service.descripcion}
-                          </p>
+                        
+                        {service.precio_base > 0 && (
+                          <button 
+                            onClick={() => addToQuote(service)}
+                            className="ml-4 bg-meabe text-white px-3 py-1.5 rounded text-[12px] font-bold hover:bg-[#5a6475] transition-all flex items-center gap-1 active:scale-95 shadow-sm"
+                          >
+                            <Plus size={14} />
+                            Añadir
+                          </button>
                         )}
-                      </div>
-                      
-                      {service.precio_base > 0 && (
-                        <button 
-                          onClick={() => addToQuote(service)}
-                          className="ml-4 bg-meabe text-white px-3 py-1.5 rounded text-[12px] font-bold hover:bg-[#5a6475] transition-all flex items-center gap-1 active:scale-95 shadow-sm"
-                        >
-                          <Plus size={14} />
-                          Añadir
-                        </button>
-                      )}
-                    </motion.div>
-                  ))}
-                </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </main>

@@ -6,6 +6,7 @@ export const CATEGORIES: Category[] = [
   { id: 3, nombre: 'Bebidas' },
   { id: 4, nombre: 'Canapés' },
   { id: 5, nombre: 'Personal' },
+  { id: 7, nombre: 'Callejoneadas' },
   { id: 6, nombre: 'Eventos Especiales' },
 ];
 
@@ -36,8 +37,18 @@ export const SERVICES: Service[] = [
   // Personal
   { id: 16, categoria_id: 5, nombre: 'Meseros', precio_base: 500.00, unidad_medida: 'unidad' },
   { id: 17, categoria_id: 5, nombre: 'Edecanes', precio_base: 500.00, unidad_medida: 'unidad' },
+  { id: 20, categoria_id: 5, nombre: 'Barman', precio_base: 500.00, unidad_medida: 'unidad' },
+  { id: 21, categoria_id: 5, nombre: 'Bartender', precio_base: 600.00, unidad_medida: 'unidad' },
+  { id: 22, categoria_id: 5, nombre: 'Capitán de meseros', precio_base: 800.00, unidad_medida: 'unidad' },
 
   // Otros (No cotizables según requerimiento pero deben aparecer)
-  { id: 18, categoria_id: 6, nombre: 'Callejoneadas', precio_base: 0, unidad_medida: 'servicio', descripcion: 'Permiso, Tamborazo, Burra, Meseros, Bebidas y más.' },
   { id: 19, categoria_id: 6, nombre: 'Organización de Eventos', precio_base: 0, unidad_medida: 'servicio', descripcion: 'Coordinación completa o por día del evento.' },
+
+  // Callejoneadas
+  { id: 30, categoria_id: 7, nombre: 'Callejoneada Pequeña (50-69 pers.) - Con Verbena', precio_base: 410.00, unidad_medida: 'persona' },
+  { id: 31, categoria_id: 7, nombre: 'Callejoneada Pequeña (50-69 pers.) - Sin Verbena', precio_base: 280.00, unidad_medida: 'persona' },
+  { id: 32, categoria_id: 7, nombre: 'Callejoneada Mediana (70-99 pers.) - Con Verbena', precio_base: 330.00, unidad_medida: 'persona' },
+  { id: 33, categoria_id: 7, nombre: 'Callejoneada Mediana (70-99 pers.) - Sin Verbena', precio_base: 200.00, unidad_medida: 'persona' },
+  { id: 34, categoria_id: 7, nombre: 'Callejoneada Grande (100+ pers.) - Con Verbena', precio_base: 280.00, unidad_medida: 'persona' },
+  { id: 35, categoria_id: 7, nombre: 'Callejoneada Grande (100+ pers.) - Sin Verbena', precio_base: 150.00, unidad_medida: 'persona' },
 ];
