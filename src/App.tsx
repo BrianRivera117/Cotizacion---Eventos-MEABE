@@ -257,7 +257,7 @@ export default function App() {
                           )}
                         </div>
                         
-                        {service.precio_base > 0 && (
+                        {(service.precio_base > 0 || service.categoria_id === 6) && (
                           <button 
                             onClick={() => addToQuote(service)}
                             className="ml-4 bg-meabe text-white px-3 py-1.5 rounded text-[12px] font-bold hover:bg-[#5a6475] transition-all flex items-center gap-1 active:scale-95 shadow-sm"

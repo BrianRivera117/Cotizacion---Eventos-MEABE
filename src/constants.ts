@@ -29,6 +29,8 @@ export const SERVICES: Service[] = [
   { id: 11, categoria_id: 3, nombre: 'Cantarito Loco (20L)', precio_base: 1500.00, unidad_medida: 'lote' },
   { id: 12, categoria_id: 3, nombre: 'Clericot (20L)', precio_base: 1200.00, unidad_medida: 'lote' },
   { id: 13, categoria_id: 3, nombre: 'Aguas naturales (20L)', precio_base: 300.00, unidad_medida: 'lote', descripcion: 'Diferentes sabores disponibles.' },
+  { id: 40, categoria_id: 3, nombre: 'Trompo', precio_base: 1000.00, unidad_medida: 'lote' },
+  { id: 41, categoria_id: 3, nombre: 'Vampiro', precio_base: 1200.00, unidad_medida: 'lote' },
   
   // Canapés
   { id: 14, categoria_id: 4, nombre: 'Canapés y fruta', precio_base: 80.00, unidad_medida: 'persona' },
