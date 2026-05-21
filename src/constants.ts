@@ -20,7 +20,8 @@ export const SERVICES: Service[] = [
   // Snacks
   { id: 5, categoria_id: 2, nombre: 'Barra de Snacks (Base fruta/fritura)', precio_base: 45.00, unidad_medida: 'persona', descripcion: 'Incluye 7 tipos de toppings a elegir.' },
   { id: 6, categoria_id: 2, nombre: 'Barra de Maruchan', precio_base: 65.00, unidad_medida: 'persona', descripcion: 'Variedad de salsas y toppings.' },
-  { id: 7, categoria_id: 2, nombre: 'Barra de Paletas de Hielo', precio_base: 35.00, unidad_medida: 'persona' },
+  { id: 7, categoria_id: 2, nombre: 'Barra de Paletas de Hielo (60 o más personas)', precio_base: 35.00, unidad_medida: 'persona' },
+  { id: 23, categoria_id: 2, nombre: 'Barra de Paletas de Hielo (59 o menos personas)', precio_base: 45.00, unidad_medida: 'persona' },
   { id: 8, categoria_id: 2, nombre: 'Barra de Elotes (6oz)', precio_base: 35.00, unidad_medida: 'persona' },
   { id: 9, categoria_id: 2, nombre: 'Barra de Elotes (8oz)', precio_base: 45.00, unidad_medida: 'persona' },
   
